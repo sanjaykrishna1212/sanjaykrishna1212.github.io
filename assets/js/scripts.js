@@ -77,7 +77,7 @@ function createThemeSelector() {
 }
 document.addEventListener('DOMContentLoaded', () => {
     createThemeSelector();
-    const savedTheme = localStorage.getItem('selectedTheme') || 'hacker';
+    const savedTheme = localStorage.getItem('selectedTheme') || 'dracula';
     document.getElementById('theme-selector').value = savedTheme;
     applyTheme(savedTheme);
 });
