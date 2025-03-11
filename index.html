@@ -1,48 +1,51 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Portfolio - Sanjay S</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 
 <body>
+    <!-- Theme Selector -->
+    <select id="theme-selector"></select>
+
     <!-- Header Section -->
     <header>
+        <div id="date-time-region"></div>
+
         <div class="container">
-        <section id="typing-effect">
-         <div class="container">
-            <h1 id="typing-text"></h1>
-         </div>
-        </section>
+            <section id="typing-effect">
+                <h1 id="typing-text"></h1>
+            </section>
             <h1>Sanjay S</h1>
             <h2>Software Developer</h2>
             <p>Building seamless web experiences</p>
             <a href="#projects" class="btn">View Projects</a>
-            <a href="assets/Sanjay-Resume.pdf" class="btn">Download Resume</a>
+            <a href="assets/Sanjay-Resume.pdf" class="btn" download>Download Resume</a>
         </div>
-        
     </header>
 
     <!-- About Me Section -->
     <section id="about">
         <div class="container">
             <h2>About Me</h2>
-            <p>I am a full-stack developer with experience in building and maintaining responsive websites. Proficient in front-end and back-end technologies, I create efficient and scalable web applications.</p>
+            <p>I am a full-stack developer with experience in building and maintaining responsive websites. Proficient
+                in front-end and back-end technologies, I create efficient and scalable web applications.</p>
             <h2>Skills</h2>
             <ul>
                 <h4>Frontend Technologies</h4>
-                <li>Html</li>
-                <li>Css</li>
+                <li>HTML</li>
+                <li>CSS</li>
                 <li>Bootstrap</li>
-                <li>Javascript</li>
-                <li>Typescript</li>
+                <li>JavaScript</li>
+                <li>TypeScript</li>
                 <li>Angular</li>
                 <h4>Backend Technologies</h4>
-                <li>Nodejs</li>
+                <li>Node.js</li>
                 <h4>Database</h4>
                 <li>Firebase</li>
                 <h4>Mobile Framework</h4>
@@ -52,11 +55,12 @@
     </section>
 
     <!-- Projects Section -->
-   <section id="projects">
-    <div class="container">
-        <h2>Projects</h2>
-        <div id="project-cards"></div>
-    </div>
+    <section id="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div id="project-cards"></div>
+        </div>
+    </section>
 
     <!-- Contact Section -->
     <section id="contact">
@@ -66,7 +70,7 @@
                 <input type="text" name="name" placeholder="Your Name" required>
                 <input type="email" name="email" placeholder="Your Email" required>
                 <textarea name="message" placeholder="Your Message" required></textarea>
-                <button type="submit">Connect</button>
+                <button class="btn" type="submit">Connect</button>
             </form>
         </div>
     </section>
@@ -76,92 +80,23 @@
         <div class="container">
             <p>&copy; 2024 Sanjay S. All rights reserved.</p>
             <div class="social">
-                <a href="https://www.linkedin.com/in/sanjay-s-35070a194/" target="_blank"><img src="./assets/Images/linkedin.png" alt="Linkedin"></a>
-                <a href="https://github.com/sanjaykrishna1212" target="_blank"><img src="./assets/Images/github.png" alt="GitHub"></a>
-                <a href="https://www.instagram.com/_.sanjay1212._?igsh=MXJrNDJ4dXlqYXJvYw==" target="_blank"><img src="./assets/Images/instagram.png" alt="Instagram"></a>
-                <a href="https://www.npmjs.com/~sanjaykrishna" target="_blank"><img src="./assets/Images/npm.png" alt="npm"></a>
 
+                <a href="https://www.npmjs.com/~sanjaykrishna" target="_blank">
+                    <i class="fa-brands fa-npm" style="font-size:48px;"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/sanjay-s-35070a194/" target="_blank">
+                    <i class="fa-brands fa-linkedin" style="font-size:48px;"></i>
+                </a>
+                <a href="https://github.com/sanjaykrishna1212" target="_blank">
+                    <i class="fa-brands fa-github" style="font-size:48px;"></i>
+                </a>
+                <a href="https://www.instagram.com/_.sanjay1212._" target="_blank"> 
+                    <i class="fa-brands fa-instagram"style="font-size:48px;"></i>
+                </a>
             </div>
         </div>
     </footer>
-
-    <script>
-    // Example project data
-     const projects = 
-     [
-    {
-        title: "Node-Fire-Storage",
-        description: "To connect with firebase storage and insert,delete,download file or folder respectively",
-        githubLink: "https://github.com/sanjaykrishna1212/node-fire-storage",
-    },
-    {
-        title: "Search.io",
-        description: "To perform search in client using search.io  ",
-        githubLink: "https://www.npmjs.com/package/search-io",
-    },
-    {
-        title: "Chat.io",
-        description: "A simple interface of chat application which would use in onpermise without any hosting url",
-        githubLink: "https://github.com/sanjaykrishna1212/chat.io",
-    },
-    {
-        title: "Launchpad",
-        description: "To deploy our application locally and test it ",
-        githubLink: "https://github.com/sanjaykrishna1212/launchpad",
-    },
-    {
-        title: "RMS",
-        description: "Simple app used for restaurant to manage their order",
-        githubLink: "https://github.com/sanjaykrishna1212/RestaurantManagementSystem",
-    },
-    {
-        title: "Wifi-Pass",
-        description: "A tool which is used to get saved wifi password ",
-        githubLink: "https://github.com/sanjaykrishna1212/wi-fi-pass",
-    },
-         
- ];
-
-   // Function to create project cards dynamically
-   function generateProjectCards()
-{
-    const projectContainer = document.getElementById( 'project-cards' );
-    projects.forEach( project =>
-    {
-        const card = document.createElement( 'div' );
-        card.classList.add( 'project' );
-        card.innerHTML = `
-            <h3>${project.title}</h3>
-            <p>${project.description}</p>
-            <a href="${project.githubLink}" class="btn" target="_blank">View on GitHub</a>
-        `;
-        projectContainer.appendChild( card );
-    } );
-}
-   document.addEventListener( 'DOMContentLoaded', generateProjectCards);
-
-    // Typing effect settings
-    const typingText = "Welcome to My Portfolio";
-    const typingSpeed = 100;
-    let index = 0;
-    function typeLetter() {
-    if (index < typingText.length) {
-        document.getElementById('typing-text').textContent += typingText.charAt(index);
-        index++;
-        setTimeout(typeLetter, typingSpeed);
-    } else {
-        setTimeout(resetTypingEffect, 2000); 
-    }
-}
-
-    function resetTypingEffect() {
-    document.getElementById('typing-text').textContent = '';
-    index = 0;
-    typeLetter();
-}
-
-    document.addEventListener('DOMContentLoaded', typeLetter);
-    </script>
+    <script src="assets/js/scripts.js"></script>
 </body>
 
 </html>
