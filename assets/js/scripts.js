@@ -47,7 +47,7 @@ const themes = {
     ubuntu: { background: '#300A24', text: '#FFFFFF', accent: '#DD4814' },
     atom: { background: '#282C34', text: '#ABB2BF', accent: '#61AFEF' },
     dracula: { background: '#282A36', text: '#F8F8F2', accent: '#BD93F9' },
-    github: { background: '#F5F5F5', text: '#24292E', accent: '#0366D6' },
+    github: { background: '#b4b4b4', text: '#24292E', accent: '#000000' },
     hacker: { background: '#000000', text: '#00FF00', accent: '#008000' },
     googledark: { background: '#202124', text: '#E8EAED', accent: '#8AB4F8' },
     googlelight: { background: '#FFFFFF', text: '#202124', accent: '#1A73E8' },
