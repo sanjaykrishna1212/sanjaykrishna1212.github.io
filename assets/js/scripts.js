@@ -20,16 +20,16 @@ document.addEventListener('DOMContentLoaded', typeLetter);
 
 // Project Cards Generation
 const projects = [
-    { title: "Node-Fire-Storage", description: "Connect with Firebase storage for file operations", githubLink: "https://github.com/sanjaykrishna1212/node-fire-storage" },
-    { title: "Search.io", description: "Client-side search implementation using search.io", githubLink: "https://www.npmjs.com/package/search-io" },
-    { title: "Chat.io", description: "Offline chat interface for on-premise use", githubLink: "https://github.com/sanjaykrishna1212/chat.io" },
-    { title: "Launchpad", description: "Local deployment tool for testing applications", githubLink: "https://github.com/sanjaykrishna1212/launchpad" },
-    { title: "RMS", description: "Restaurant management system for order processing", githubLink: "https://github.com/sanjaykrishna1212/RestaurantManagementSystem" },
-    { title: "Wifi-Pass", description: "Retrieve saved Wi-Fi passwords", githubLink: "https://github.com/sanjaykrishna1212/wi-fi-pass" }
+    { title: "Node-Fire-Storage", description: "Connect with Firebase storage for file operations", githubLink: "https://github.com/sanjaykrishna1212/node-fire-storage", tech: ["Node.js", "Firebase"], screenshot: null },
+    { title: "Search.io", description: "Client-side search implementation using search.io", githubLink: "https://www.npmjs.com/package/search-io", tech: ["JavaScript", "Search.io"], screenshot: null },
+    { title: "Chat.io", description: "Offline chat interface for on-premise use", githubLink: "https://github.com/sanjaykrishna1212/chat.io", tech: ["JavaScript", "Socket.io"], screenshot: null },
+    { title: "Launchpad", description: "Local deployment tool for testing applications", githubLink: "https://github.com/sanjaykrishna1212/launchpad", tech: ["Node.js", "CLI"], screenshot: null },
+    { title: "RMS", description: "Restaurant management system for order processing", githubLink: "https://github.com/sanjaykrishna1212/RestaurantManagementSystem", tech: ["JavaScript", "Node.js"], screenshot: null },
+    { title: "Wifi-Pass", description: "Retrieve saved Wi-Fi passwords", githubLink: "https://github.com/sanjaykrishna1212/wi-fi-pass", tech: ["Node.js", "Windows"], screenshot: null }
 ];
 function generateProjectCards() {
     const projectContainer = document.getElementById('project-cards');
-    projects.forEach(project => {
+    projects.forEach((project, idx) => {
         const card = document.createElement('div');
         card.classList.add('project');
         card.innerHTML = `
@@ -37,10 +37,37 @@ function generateProjectCards() {
             <p>${project.description}</p>
             <a href="${project.githubLink}" class="btn" target="_blank">View on GitHub</a>
         `;
+        card.addEventListener('click', (e) => {
+            if (e.target.tagName.toLowerCase() === 'a') return;
+            showProjectModal(idx);
+        });
         projectContainer.appendChild(card);
     });
 }
+function showProjectModal(idx) {
+    const project = projects[idx];
+    const modal = document.getElementById('project-modal');
+    const modalBody = document.getElementById('modal-body');
+    modalBody.innerHTML = `
+        <h2>${project.title}</h2>
+        <p>${project.description}</p>
+        <p><strong>Tech Stack:</strong> ${project.tech ? project.tech.join(', ') : 'N/A'}</p>
+        ${project.screenshot ? `<img src="${project.screenshot}" alt="${project.title} screenshot" style="width:100%;border-radius:8px;margin:12px 0;">` : ''}
+        <a href="${project.githubLink}" class="btn" target="_blank">View on GitHub</a>
+    `;
+    modal.style.display = 'flex';
+}
 document.addEventListener('DOMContentLoaded', generateProjectCards);
+// Modal close logic
+function closeProjectModal() {
+    document.getElementById('project-modal').style.display = 'none';
+}
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('.close-modal').onclick = closeProjectModal;
+    document.getElementById('project-modal').onclick = function(e) {
+        if (e.target === this) closeProjectModal();
+    };
+});
 
 // Theme Selector
 const themes = {
@@ -84,13 +111,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function updateDateTimeRegion() {
     const now = new Date();
-    const formattedDateTime = now.toLocaleString(); // Auto formats based on user's locale
-
-    // Fetch user's region (timezone)
+    const formattedDateTime = now.toLocaleString(); 
     const region = Intl.DateTimeFormat().resolvedOptions().timeZone;
-
-    // Update the display
     document.getElementById("date-time-region").textContent = `${formattedDateTime} | ${region}`;
 }
 setInterval(updateDateTimeRegion, 1000);
 updateDateTimeRegion();
+
+// Contact form: build mailto link with pre-filled subject and body
+
+document.addEventListener('DOMContentLoaded', () => {
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = contactForm.elements['name'].value.trim();
+            const email = contactForm.elements['email'].value.trim();
+            const message = contactForm.elements['message'].value.trim();
+            const body = `Hello Sanjay,%0D%0A%0D%0AYou have received a new message from your portfolio contact form.%0D%0A%0D%0A----------------------------------------%0D%0AName: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}%0D%0A----------------------------------------%0D%0A%0D%0AThanx,%0D%0APortfolio Manager`;
+            const mailto = `mailto:sanjaykrish1212@gmail.com?subject=Portfolio Contact from ${encodeURIComponent(name)}&body=${body}`;
+            window.open(mailto, '_blank');
+        });
+    }
+});
