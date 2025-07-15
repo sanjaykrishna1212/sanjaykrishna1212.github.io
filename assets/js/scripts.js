@@ -79,7 +79,23 @@ const themes = {
     googledark: { background: '#202124', text: '#E8EAED', accent: '#8AB4F8' },
     googlelight: { background: '#FFFFFF', text: '#202124', accent: '#1A73E8' },
     monokai: { background: '#272822', text: '#F8F8F2', accent: '#F92672' },
-    powershell: { background: '#012456', text: '#E0E0E0', accent: '#007ACC' }
+    powershell: { background: '#012456', text: '#E0E0E0', accent: '#007ACC' },
+    solarizedlight: { background: '#FDF6E3', text: '#657B83', accent: '#268BD2' },
+    solarizeddark: { background: '#002B36', text: '#839496', accent: '#B58900' },
+    nord: { background: '#2E3440', text: '#D8DEE9', accent: '#88C0D0' },
+    nordlight: { background: '#ECEFF4', text: '#2E3440', accent: '#5E81AC' },
+    gruvboxdark: { background: '#282828', text: '#EBDBB2', accent: '#FABD2F' },
+    gruvboxlight: { background: '#FBF1C7', text: '#3C3836', accent: '#B57614' },
+    gruvboxmaterial: { background: '#32302F', text: '#D4BE98', accent: '#FE8019' },
+    nightowl: { background: '#011627', text: '#D6DEEB', accent: '#82AAFF' },
+    materialdark: { background: '#263238', text: '#ECEFF1', accent: '#FF9800' },
+    materiallight: { background: '#FAFAFA', text: '#263238', accent: '#009688' },
+    tokyonight: { background: '#1A1B26', text: '#C0CAF5', accent: '#7AA2F7' },
+    cobalt: { background: '#002240', text: '#FFFFFF', accent: '#FF9D00' },
+    synthwave: { background: '#2B213A', text: '#F92AAD', accent: '#FFE66D' },
+    nightfox: { background: '#192330', text: '#C6D0F5', accent: '#FF966C' },
+    everforest: { background: '#2D353B', text: '#D3C6AA', accent: '#A7C080' },
+    rosepine: { background: '#191724', text: '#E0DEF4', accent: '#EB6F92' }
 };
 function applyTheme(themeName) {
     const theme = themes[themeName];
@@ -117,8 +133,6 @@ async function updateDateTimeRegion() {
 }
 setInterval(updateDateTimeRegion, 1000);
 updateDateTimeRegion();
-
-// Contact form: build mailto link with pre-filled subject and body
 
 document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contact-form');
